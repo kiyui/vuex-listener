@@ -1,0 +1,35 @@
+{
+  "name": "vuex-listener",
+  "version": "0.0.0",
+  "description": "A global Vuex listener plugin",
+  "main": "dist/plugin.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimurKiyivinski/vuex-listener.git"
+  },
+  "keywords": [
+    "vue",
+    "vuex",
+    "listener"
+  ],
+  "author": "Timur Kiyui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimurKiyivinski/vuex-listener/issues"
+  },
+  "homepage": "https://github.com/TimurKiyivinski/vuex-listener#readme",
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "lodash-decorators": "^6.0.1",
+    "vue": "^2.6.7",
+    "vuex": "^3.1.0"
+  }
+}
