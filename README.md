@@ -1,5 +1,6 @@
 # vuex-listener
 [![Build Status](https://travis-ci.org/TimurKiyivinski/vuex-listener.svg?branch=master)](https://travis-ci.org/TimurKiyivinski/vuex-listener)
+
 A global Vuex `action` and `mutation` listener plugin, for optimisation purposes.
 
 ## justification
@@ -12,6 +13,7 @@ Check out the [demo](https://stackblitz.com/edit/vuex-listener-demo) on StackBli
 
 ## usage
 ```
+# requires vuex@^3.1.0
 npm install --save vuex-listener@latest
 ```
 
