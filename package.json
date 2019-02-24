@@ -1,6 +1,6 @@
 {
   "name": "vuex-listener",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A global Vuex listener plugin",
   "main": "dist/plugin.js",
   "types": "./src/index.d.ts",
