@@ -6,6 +6,8 @@
   "types": "./src/index.d.ts",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "build": "tsc"
   },
   "repository": {
@@ -24,6 +26,10 @@
   },
   "homepage": "https://github.com/TimurKiyivinski/vuex-listener#readme",
   "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "@types/lodash": "^4.14.121",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
