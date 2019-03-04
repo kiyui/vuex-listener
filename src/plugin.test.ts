@@ -115,7 +115,8 @@ describe('vuex-listener', () => {
 
   test('$storeListener instance is passed to component children', () => {
     const store = new Vuex.Store({})
-    let childStoreListener, parentStoreListener
+    let childStoreListener
+    let parentStoreListener
 
     const childOptions: any = {
       mounted () {
@@ -219,7 +220,7 @@ describe('vuex-listener', () => {
     const mutationListener = jest.fn()
 
     // Run store methods
-    await store.commit('noop')
+    store.commit('noop')
     await store.dispatch('noop')
 
     // Assert that store is unsubscribed
@@ -234,7 +235,7 @@ describe('vuex-listener', () => {
     expect(mutationSubscribe).toHaveBeenCalledTimes(1)
     expect(actionSubscribe).toHaveBeenCalledTimes(1)
 
-    await store.commit('noop')
+    store.commit('noop')
     await store.dispatch('noop')
 
     // Assert that unlistened invocations are not listened to

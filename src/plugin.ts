@@ -15,9 +15,9 @@ interface SubscriberFn<S> {
 }
 
 interface Listeners<S> {
-  mutationListeners: Record<string, ListenerFn<S>[]>
-  beforeActionListeners: Record<string, ListenerFn<S>[]>
-  afterActionListeners: Record<string, ListenerFn<S>[]>
+  mutationListeners: Partial<Record<string, ListenerFn<S>[]>>
+  beforeActionListeners: Partial<Record<string, ListenerFn<S>[]>>
+  afterActionListeners: Partial<Record<string, ListenerFn<S>[]>>
 }
 
 export class Listener<S> {
@@ -45,7 +45,7 @@ export class Listener<S> {
   private subscribeToMutations () {
     this.store.subscribe((mutation, state) => {
       if (this.listeners.mutationListeners[mutation.type] === undefined) return
-      this.listeners.mutationListeners[mutation.type].forEach(listener => listener(mutation.payload, state))
+      this.listeners.mutationListeners[mutation.type]!.forEach(listener => listener(mutation.payload, state))
     })
   }
 
@@ -54,11 +54,11 @@ export class Listener<S> {
     this.store.subscribeAction({
       before: (action, state) => {
         if (this.listeners.beforeActionListeners[action.type] === undefined) return
-        this.listeners.beforeActionListeners[action.type].forEach(listener => listener(action.payload, state))
+        this.listeners.beforeActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
       },
       after: (action, state) => {
         if (this.listeners.afterActionListeners[action.type] === undefined) return
-        this.listeners.afterActionListeners[action.type].forEach(listener => listener(action.payload, state))
+        this.listeners.afterActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
       }
     })
   }
@@ -77,11 +77,11 @@ export class Listener<S> {
       }
 
       // Add listener
-      this.listeners[listeners][key].push(listener)
+      this.listeners[listeners][key]!.push(listener)
 
       // Unsubscribe function
       return () => {
-        this.listeners[listeners][key] = this.listeners[listeners][key].filter(l => l !== listener)
+        this.listeners[listeners][key] = this.listeners[listeners][key]!.filter(l => l !== listener)
       }
     }
   }
