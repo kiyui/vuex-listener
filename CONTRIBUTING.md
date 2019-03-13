@@ -1,5 +1,5 @@
 # contributing to vuex-listener
-- be nice & polite
+- please refer to the [code of conduct](CODE_OF_CONDUCT.md)
 - please speak in English so others referring to the PR/Issue can understand
 
 ## code
