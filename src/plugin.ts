@@ -1,6 +1,5 @@
 import { PluginObject } from 'vue'
 import { Store } from 'vuex'
-import { Once } from 'lodash-decorators'
 
 interface ListenerFn<S> {
   (payload: any, state: S): void
@@ -27,6 +26,9 @@ export class Listener<S> {
   public readonly addBeforeActionListener: SubscriberFn<S>
   public readonly addAfterActionListener: SubscriberFn<S>
 
+  private actionsAreListened: boolean;
+  private mutationsAreListened: boolean;
+
   constructor (store: Store<S>) {
     this.store = store
     this.listeners = {
@@ -35,32 +37,39 @@ export class Listener<S> {
       afterActionListeners: {}
     }
 
+    this.actionsAreListened = false;
+    this.mutationsAreListened = false;
+
     // Set up subscriber methods
     this.addMutationListener = this.createSubscriber('mutationListeners', this.subscribeToMutations.bind(this))
     this.addBeforeActionListener = this.createSubscriber('beforeActionListeners', this.subscribeToActions.bind(this))
     this.addAfterActionListener = this.createSubscriber('afterActionListeners', this.subscribeToActions.bind(this))
   }
 
-  @Once
   private subscribeToMutations () {
-    this.store.subscribe((mutation, state) => {
-      if (this.listeners.mutationListeners[mutation.type] === undefined) return
-      this.listeners.mutationListeners[mutation.type]!.forEach(listener => listener(mutation.payload, state))
-    })
+    if (!this.mutationsAreListened) {
+      this.store.subscribe((mutation, state) => {
+        if (this.listeners.mutationListeners[mutation.type] === undefined) return
+        this.listeners.mutationListeners[mutation.type]!.forEach(listener => listener(mutation.payload, state))
+      })
+      this.mutationsAreListened = true
+    }
   }
 
-  @Once
   private subscribeToActions () {
-    this.store.subscribeAction({
-      before: (action, state) => {
-        if (this.listeners.beforeActionListeners[action.type] === undefined) return
-        this.listeners.beforeActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
-      },
-      after: (action, state) => {
-        if (this.listeners.afterActionListeners[action.type] === undefined) return
-        this.listeners.afterActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
-      }
-    })
+    if (!this.actionsAreListened) {
+       this.store.subscribeAction({
+        before: (action, state) => {
+          if (this.listeners.beforeActionListeners[action.type] === undefined) return
+          this.listeners.beforeActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
+        },
+        after: (action, state) => {
+          if (this.listeners.afterActionListeners[action.type] === undefined) return
+          this.listeners.afterActionListeners[action.type]!.forEach(listener => listener(action.payload, state))
+        }
+      })
+      this.actionsAreListened = true
+    }
   }
 
   /**
