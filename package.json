@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimurKiyivinski/vuex-listener.git"
+    "url": "git+https://github.com/kiyui/vuex-listener.git"
   },
   "keywords": [
     "vue",
@@ -34,9 +34,9 @@
   "author": "Timur Kiyui",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TimurKiyivinski/vuex-listener/issues"
+    "url": "https://github.com/kiyui/vuex-listener/issues"
   },
-  "homepage": "https://github.com/TimurKiyivinski/vuex-listener#readme",
+  "homepage": "https://github.com/kiyui/vuex-listener#readme",
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/lodash": "^4.14.162",
