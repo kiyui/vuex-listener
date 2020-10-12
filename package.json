@@ -14,8 +14,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run lint:fix",
-      "git add"
+      "npm run lint:fix"
     ]
   },
   "husky": {
@@ -25,33 +24,33 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimurKiyivinski/vuex-listener.git"
+    "url": "git+https://github.com/kiyui/vuex-listener.git"
   },
   "keywords": [
     "vue",
     "vuex",
     "listener"
   ],
-  "author": "Timur Kiyui",
+  "author": "Dafne Kiyui",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TimurKiyivinski/vuex-listener/issues"
+    "url": "https://github.com/kiyui/vuex-listener/issues"
   },
-  "homepage": "https://github.com/TimurKiyivinski/vuex-listener#readme",
+  "homepage": "https://github.com/kiyui/vuex-listener#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/lodash": "^4.14.123",
-    "husky": "^1.3.1",
-    "jest": "^24.4.0",
-    "lint-staged": "^8.1.5",
-    "lodash": "^4.17.11",
-    "ts-jest": "^24.0.0",
+    "@types/jest": "^26.0.14",
+    "@types/lodash": "^4.14.162",
+    "husky": "^4.3.0",
+    "jest": "^26.5.3",
+    "lint-staged": "^10.4.0",
+    "lodash": "^4.17.20",
+    "ts-jest": "^26.4.1",
     "tslint": "^5.13.1",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.3.3333"
+    "typescript": "^4.0.3"
   },
   "dependencies": {
-    "vue": "^2.6.8",
-    "vuex": "^3.1.0"
+    "vue": "^2.6.12",
+    "vuex": "^3.5.1"
   }
 }
