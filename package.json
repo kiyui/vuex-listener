@@ -31,7 +31,7 @@
     "vuex",
     "listener"
   ],
-  "author": "Timur Kiyui",
+  "author": "Dafne Kiyui",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kiyui/vuex-listener/issues"
